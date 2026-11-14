@@ -198,6 +198,8 @@ POJAT/
 
 *Struktur di atas merupakan rancangan organisasi kode. File dan package dapat bertambah atau berubah selama pengembangan.*
 
+tambah latar belakang, tambah erd, tambah flowchart, tambhan class diagram
+
 ## ⚙️ 9. Installation & Setup
 
 ### Prerequisites
