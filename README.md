@@ -1,208 +1,151 @@
-# Jatinangor UMKM Hub
+# 🛍️ POJAT
+### Platform Pemesanan Produk UMKM Jatinangor
 
-**Aplikasi Bisnis UMKM di Daerah Jatinangor**
+**Pesan Lebih Mudah, Dukung UMKM Jatinangor!**
 
-Jatinangor UMKM Hub merupakan aplikasi desktop berbasis Java yang dirancang untuk membantu digitalisasi proses bisnis UMKM di daerah Jatinangor. Aplikasi ini menyediakan sistem pengelolaan UMKM, katalog produk, pemesanan berbasis Pre-Order (PO), serta pengelolaan transaksi yang terintegrasi dengan database.
+POJAT (Platform Pemesanan Produk UMKM Jatinangor) merupakan aplikasi desktop yang dirancang untuk memfasilitasi pengelolaan UMKM dan pemesanan produk UMKM di wilayah Jatinangor.
+
+Aplikasi ini menghubungkan tiga jenis pengguna, yaitu SuperAdmin, Admin UMKM, dan Pembeli, dalam satu sistem yang terintegrasi. Melalui POJAT, pengelolaan informasi UMKM, produk, periode pemesanan, dan transaksi diharapkan dapat dilakukan secara lebih terstruktur dan efisien.
 
 ---
 
-## 1. Informasi Proyek
+## 📌 1. Project Overview
 
-| Keterangan | Detail |
+| Informasi | Keterangan |
 |---|---|
-| Nama Proyek | Jatinangor UMKM Hub |
-| Tema | Bisnis UMKM di Daerah Jatinangor |
-| Jenis Aplikasi | Desktop Application |
+| Nama Proyek | POJAT |
+| Kepanjangan | Platform Pemesanan Produk UMKM Jatinangor |
+| Kategori | Desktop Application |
 | Bahasa Pemrograman | Java |
 | GUI Framework | Java Swing |
 | Database | MySQL / MariaDB |
-| Database Management | Laragon |
-| Database Interface | phpMyAdmin / HeidiSQL |
-| Database Connectivity | JDBC |
+| Database Connector | JDBC |
+| Database Environment | Laragon |
 | IDE | Apache NetBeans |
 | Version Control | Git & GitHub |
-| Anggota Tim | 3 orang |
 
-## 2. Tujuan Proyek
+## 🎯 2. Project Objectives
 
-Aplikasi ini dikembangkan untuk:
+POJAT dikembangkan dengan beberapa tujuan utama:
 
-1. Membantu UMKM di daerah Jatinangor memasarkan produk secara digital.
-2. Mempermudah pengelolaan katalog menu dan informasi produk.
-3. Menyediakan sistem pemesanan berbasis Batch Pre-Order.
-4. Mempermudah pembeli dalam melihat produk dan melakukan pemesanan.
-5. Membantu pengelolaan data pengguna, UMKM, menu, batch, dan transaksi secara terintegrasi.
-6. Menerapkan konsep Object-Oriented Programming (OOP), Java Swing, dan integrasi database.
+1. Memfasilitasi pengelolaan data UMKM dalam satu platform.
+2. Memudahkan pelaku UMKM dalam mengelola informasi toko dan produk.
+3. Menyediakan sistem pemesanan produk yang terstruktur.
+4. Mempermudah pembeli dalam melihat katalog dan melakukan pemesanan.
+5. Mendukung digitalisasi dan pengembangan UMKM di wilayah Jatinangor.
 
-## 3. Teknologi yang Digunakan
+## 👥 3. User Roles
 
-| Teknologi | Fungsi |
-|---|---|
-| Java | Bahasa pemrograman utama |
-| Java Swing | Membangun antarmuka aplikasi |
-| Apache NetBeans | IDE untuk pengembangan |
-| MySQL / MariaDB | Sistem manajemen database |
-| Laragon | Menjalankan database server lokal |
-| JDBC | Menghubungkan aplikasi Java dengan database |
-| Git | Mengelola versi kode |
-| GitHub | Menyimpan repository proyek |
+POJAT memiliki tiga jenis pengguna dengan hak akses yang berbeda.
 
-## 4. Fitur dan Hak Akses Pengguna
+### 3.1 SuperAdmin
+Bertanggung jawab mengelola dan memantau sistem secara keseluruhan.
 
-Aplikasi memiliki tiga jenis role pengguna.
-
-### A. SuperAdmin
-
-SuperAdmin bertugas mengelola dan memantau keseluruhan sistem.
-
-Fitur:
-- Login SuperAdmin.
-- Melihat dashboard utama.
+- Mengakses dashboard SuperAdmin.
 - Mengelola data pengguna.
 - Mengelola data UMKM.
-- Memantau data Batch PO.
+- Memantau data produk.
+- Memantau Batch PO.
 - Melihat data pesanan.
-- Mengelola informasi sistem.
 
-### B. Admin UMKM
+### 3.2 Admin UMKM
+Bertanggung jawab mengelola toko dan produk UMKM masing-masing.
 
-Admin UMKM bertugas mengelola operasional toko masing-masing.
-
-Fitur:
-- Login Admin UMKM.
+- Mengakses dashboard Admin UMKM.
 - Mengelola profil UMKM.
-- Menambahkan menu.
-- Mengubah informasi menu.
-- Menghapus menu.
-- Mengelola Batch PO.
-- Melihat pesanan masuk.
-- Memantau kuota dan status Batch PO.
+- Menambahkan produk atau menu.
+- Mengubah informasi produk.
+- Menghapus produk.
+- Membuat dan mengelola Batch PO.
+- Melihat pesanan yang masuk.
 
-### C. Pembeli
+### 3.3 Pembeli
+Menggunakan aplikasi untuk menemukan dan memesan produk UMKM.
 
-Pembeli menggunakan aplikasi untuk mencari produk dan melakukan pemesanan.
-
-Fitur:
-- Registrasi akun.
-- Login pembeli.
+- Melakukan registrasi dan login.
 - Melihat katalog UMKM.
-- Melihat katalog menu.
+- Melihat produk yang tersedia.
 - Melihat informasi Batch PO.
 - Melakukan pemesanan.
-- Melihat riwayat pesanan.
-- Melihat status pesanan.
+- Melihat riwayat dan status pesanan.
 
-## 5. Perancangan Database
+## ✨ 4. Main Features
 
-Database yang digunakan bernama:
+| Fitur | Deskripsi |
+|---|---|
+| Authentication | Login dan registrasi pengguna |
+| Role-Based Access | Hak akses berdasarkan jenis pengguna |
+| Dashboard | Tampilan informasi sesuai role |
+| User Management | Pengelolaan data pengguna |
+| UMKM Management | Pengelolaan data UMKM |
+| Product Management | CRUD data produk atau menu |
+| Batch PO Management | Pengelolaan periode pemesanan |
+| Product Catalog | Menampilkan katalog produk UMKM |
+| Order Management | Pengelolaan transaksi pemesanan |
+| Order History | Melihat riwayat pemesanan |
 
-`db_umkm_jatinangor`
+*Catatan: Daftar fitur merupakan rancangan awal dan akan disesuaikan dengan implementasi serta kebutuhan proyek.*
 
-Database dirancang menggunakan enam tabel utama yang saling berelasi.
+## 🏗️ 5. System Architecture
 
-### A. Tabel users
+POJAT menggunakan pemisahan komponen aplikasi untuk memudahkan pengembangan dan pemeliharaan sistem.
 
-Menyimpan informasi seluruh pengguna aplikasi.
+### Architecture Layers
 
-| Field | Tipe Data | Keterangan |
+1. **View (Presentation Layer)**  
+   Menampilkan antarmuka aplikasi menggunakan Java Swing.
+
+2. **Controller (Business Logic Layer)**  
+   Mengatur alur aplikasi, validasi input, hak akses, dan proses bisnis.
+
+3. **Model (Data Layer)**  
+   Merepresentasikan objek dan entitas yang digunakan dalam sistem.
+
+4. **DAO (Data Access Object)**  
+   Menangani operasi database seperti Create, Read, Update, dan Delete.
+
+5. **JDBC Driver**  
+   Menghubungkan aplikasi Java dengan database.
+
+6. **Database Server**  
+   Menyimpan data aplikasi menggunakan MySQL atau MariaDB melalui Laragon.
+
+## 🗄️ 6. Database Design
+
+Database proyek menggunakan enam tabel utama dalam rancangan awal:
+
+| No. | Nama Tabel | Fungsi |
 |---|---|---|
-| id_user | INT | Primary Key |
-| username | VARCHAR | Username pengguna |
-| password | VARCHAR | Password pengguna |
-| nama_lengkap | VARCHAR | Nama lengkap |
-| no_hp | VARCHAR | Nomor HP |
-| role | VARCHAR | Hak akses pengguna |
-| created_at | TIMESTAMP | Waktu pembuatan akun |
+| 1 | users | Menyimpan informasi akun pengguna |
+| 2 | umkm | Menyimpan informasi UMKM |
+| 3 | menu_item | Menyimpan data produk atau menu |
+| 4 | batch_po | Menyimpan informasi periode pemesanan |
+| 5 | pesanan | Menyimpan informasi transaksi pesanan |
+| 6 | detail_pesanan | Menyimpan rincian produk dalam pesanan |
 
-### B. Tabel umkm
+**Nama database rancangan:** `pojat_db`
 
-Menyimpan informasi UMKM yang terdaftar.
+> Struktur tabel, nama kolom, tipe data, primary key, dan foreign key harus mengikuti skema database aktual yang digunakan dalam proyek.
 
-| Field | Tipe Data | Keterangan |
-|---|---|---|
-| id_umkm | INT | Primary Key |
-| id_owner | INT | Foreign Key ke users |
-| nama_toko | VARCHAR | Nama toko |
-| deskripsi | TEXT | Deskripsi UMKM |
-| alamat_penjemputan | TEXT | Alamat penjemputan |
-| no_rekening | VARCHAR | Nomor rekening |
-| bank | VARCHAR | Nama bank |
+## 💻 7. Technologies Used
 
-### C. Tabel menu_item
+| Teknologi | Kegunaan |
+|---|---|
+| Java | Bahasa pemrograman utama |
+| Java Swing | Membangun antarmuka desktop |
+| MySQL / MariaDB | Sistem manajemen database |
+| JDBC | Koneksi Java dengan database |
+| Laragon | Menjalankan database server lokal |
+| Apache NetBeans | IDE untuk pengembangan |
+| Git | Version control |
+| GitHub | Penyimpanan dan kolaborasi proyek |
 
-Menyimpan informasi menu atau produk UMKM.
+## 📂 8. Project Structure
 
-| Field | Tipe Data | Keterangan |
-|---|---|---|
-| id_menu | INT | Primary Key |
-| id_umkm | INT | Foreign Key ke umkm |
-| nama_menu | VARCHAR | Nama menu |
-| deskripsi | TEXT | Deskripsi menu |
-| harga | DOUBLE | Harga produk |
-| stok_per_batch | INT | Stok produk per batch |
-
-### D. Tabel batch_po
-
-Menyimpan informasi periode pemesanan produk.
-
-| Field | Tipe Data | Keterangan |
-|---|---|---|
-| id_batch | INT | Primary Key |
-| id_umkm | INT | Foreign Key ke umkm |
-| nama_batch | VARCHAR | Nama batch |
-| tgl_buka | TIMESTAMP | Tanggal pembukaan PO |
-| tgl_tutup | TIMESTAMP | Tanggal penutupan PO |
-| tgl_pengiriman | DATE | Tanggal pengiriman |
-| kuota_max | INT | Kuota maksimal |
-| status | VARCHAR | Status batch |
-
-### E. Tabel pesanan
-
-Menyimpan informasi transaksi pemesanan pembeli.
-
-| Field | Tipe Data | Keterangan |
-|---|---|---|
-| id_pesanan | INT | Primary Key |
-| kode_traksi | VARCHAR | Kode transaksi |
-| id_batch | INT | Foreign Key ke batch_po |
-| id_pembeli | INT | Foreign Key ke users |
-| tgl_pesan | TIMESTAMP | Waktu pemesanan |
-| total_harga | DOUBLE | Total harga |
-| metode_pengambilan | VARCHAR | Metode pengambilan |
-| bukti_pembayaran | VARCHAR | Bukti pembayaran |
-| status_pesanan | VARCHAR | Status pesanan |
-
-### F. Tabel detail_pesanan
-
-Menyimpan rincian produk dalam setiap transaksi.
-
-| Field | Tipe Data | Keterangan |
-|---|---|---|
-| id_detail | INT | Primary Key |
-| id_pesanan | INT | Foreign Key ke pesanan |
-| id_menu | INT | Foreign Key ke menu_item |
-| jumlah | INT | Jumlah produk |
-| subtotal | DOUBLE | Subtotal harga |
-| catatan_khusus | TEXT | Catatan pembeli |
-
-## 6. Relasi Antar Tabel
-
-Hubungan antar tabel dalam database:
-
-- users → umkm: satu pengguna pemilik dapat memiliki data UMKM.
-- users → pesanan: satu pembeli dapat memiliki banyak pesanan.
-- umkm → menu_item: satu UMKM dapat memiliki banyak menu.
-- umkm → batch_po: satu UMKM dapat memiliki banyak batch.
-- batch_po → pesanan: satu batch dapat memiliki banyak pesanan.
-- pesanan → detail_pesanan: satu pesanan dapat memiliki beberapa detail produk.
-- menu_item → detail_pesanan: satu menu dapat muncul dalam banyak detail pesanan.
-
-## 7. Struktur Folder Project
-
-Struktur project Java menggunakan pendekatan pemisahan fungsi berdasarkan package.
+Struktur folder yang direncanakan:
 
 ```text
-JatinangorUMKM/
+POJAT/
 │
 ├── src/
 │   ├── config/
@@ -213,264 +156,185 @@ JatinangorUMKM/
 │   │   ├── UMKM.java
 │   │   ├── MenuItem.java
 │   │   ├── BatchPO.java
-│   │   ├── Pesanan.java
-│   │   └── DetailPesanan.java
+│   │   └── Pesanan.java
 │   │
 │   ├── dao/
 │   │   ├── UserDAO.java
 │   │   ├── UMKMDAO.java
-│   │   ├── MenuDAO.java
-│   │   └── BatchPODAO.java
+│   │   ├── MenuItemDAO.java
+│   │   ├── BatchPODAO.java
+│   │   └── PesananDAO.java
+│   │
+│   ├── controller/
 │   │
 │   ├── view/
-│   │   ├── LoginFrame.java
-│   │   ├── RegisterFrame.java
+│   │   ├── LoginView.java
 │   │   ├── SuperAdminDashboard.java
 │   │   ├── UMKMDashboard.java
 │   │   └── PembeliDashboard.java
 │   │
-│   ├── controller/
-│   │   ├── LoginController.java
-│   │   ├── MenuController.java
-│   │   └── BatchPOController.java
-│   │
 │   ├── util/
-│   │   ├── PasswordUtil.java
-│   │   └── Validator.java
 │   │
 │   └── Main.java
 │
-├── libraries/
-│   └── JDBC Connector
+├── database/
+│   ├── schema.sql
+│   ├── seed.sql
+│   └── queries.sql
 │
+├── docs/
+│   ├── SYSTEM_ARCHITECTURE.md
+│   ├── FEATURE_SPECIFICATION.md
+│   ├── TESTING_DOCUMENTATION.md
+│   └── DATABASE_DESIGN.md
+│
+├── screenshots/
+│   └── testing/
+│
+├── .gitignore
 ├── README.md
-└── .gitignore
+└── LICENSE
 ```
 
-Keterangan:
+*Struktur di atas merupakan rancangan organisasi kode. File dan package dapat bertambah atau berubah selama pengembangan.*
 
-- `config`: konfigurasi koneksi database.
-- `model`: representasi objek dan struktur data.
-- `dao`: pengelolaan operasi database.
-- `view`: tampilan antarmuka pengguna.
-- `controller`: penghubung view dan model/DAO.
-- `util`: fungsi bantuan dan validasi.
-- `Main.java`: titik awal eksekusi aplikasi.
+## ⚙️ 9. Installation & Setup
 
-## 8. Instalasi dan Konfigurasi
-
-### A. Persiapan Perangkat
+### Prerequisites
 
 Pastikan perangkat telah memiliki:
 
-1. Java Development Kit (JDK).
-2. Apache NetBeans.
-3. Laragon.
-4. MySQL atau MariaDB.
-5. JDBC Connector yang sesuai dengan database.
-6. Git.
+- Java Development Kit (JDK).
+- Apache NetBeans IDE.
+- Laragon.
+- MySQL atau MariaDB.
+- JDBC Driver yang sesuai dengan database.
 
-### B. Menjalankan Database
-
-1. Buka Laragon.
-2. Klik Start All atau jalankan layanan database.
-3. Pastikan MySQL/MariaDB aktif.
-4. Buka HeidiSQL atau phpMyAdmin.
-5. Pastikan database `db_umkm_jatinangor` sudah tersedia.
-6. Pastikan keenam tabel telah dibuat.
-
-### C. Membuat Project NetBeans
-
-1. Buka Apache NetBeans.
-2. Pilih File → New Project.
-3. Pilih Java Application.
-4. Beri nama project `JatinangorUMKM`.
-5. Buat package sesuai struktur project.
-
-### D. Memasang JDBC Connector
-
-1. Unduh JDBC Connector sesuai database yang digunakan.
-2. Buka project di NetBeans.
-3. Klik kanan Libraries.
-4. Pilih Add JAR/Folder.
-5. Pilih file JDBC Connector berekstensi `.jar`.
-6. Pastikan connector muncul pada Libraries.
-
-### E. Konfigurasi DatabaseConnection.java
-
-Atur informasi koneksi sesuai konfigurasi Laragon.
-
-Contoh konfigurasi MariaDB:
-
-```java
-private static final String URL =
-    "jdbc:mariadb://localhost:3306/db_umkm_jatinangor";
-
-private static final String USER = "root";
-
-private static final String PASSWORD = "";
-```
-
-Untuk MySQL, gunakan URL:
-
-```java
-jdbc:mysql://localhost:3306/db_umkm_jatinangor
-```
-
-Sesuaikan port, username, dan password dengan konfigurasi database lokal.
-
-### F. Menguji Koneksi
-
-Jalankan class `TestConnection.java`.
-
-Jika berhasil, console akan menampilkan:
-
-```text
-KONEKSI DATABASE BERHASIL!
-```
-
-## 9. Alur Sistem Aplikasi
-
-### A. Alur Login
-
-1. Pengguna membuka aplikasi.
-2. Pengguna memasukkan username dan password.
-3. Sistem melakukan validasi akun.
-4. Sistem memeriksa role pengguna.
-5. Pengguna diarahkan ke dashboard sesuai hak akses.
-
-### B. Alur Pengelolaan Menu
-
-1. Admin UMKM login.
-2. Admin membuka tab Kelola Menu.
-3. Admin memasukkan informasi produk.
-4. Sistem melakukan validasi.
-5. DAO menjalankan perintah SQL.
-6. Database menyimpan perubahan.
-7. JTable diperbarui sesuai data terbaru.
-
-### C. Alur Batch PO
-
-1. Admin UMKM membuka tab Batch PO.
-2. Admin membuat batch baru.
-3. Admin menentukan periode pembukaan dan penutupan.
-4. Admin menentukan tanggal pengiriman.
-5. Admin memasukkan kuota maksimal.
-6. Sistem memvalidasi informasi.
-7. Data batch disimpan ke database.
-
-### D. Alur Pemesanan
-
-1. Pembeli membuka katalog.
-2. Pembeli memilih produk.
-3. Pembeli memilih batch yang tersedia.
-4. Pembeli menentukan jumlah produk.
-5. Sistem menghitung total harga.
-6. Pembeli melakukan konfirmasi pesanan.
-7. Sistem menyimpan transaksi dan detail pesanan.
-8. Status pesanan dapat dipantau melalui aplikasi.
-
-## 10. Pembagian Tugas Pengembangan
-
-### Jasmine — Lead Back-End & Database
-
-Tanggung jawab:
-- Membuat database MySQL.
-- Mengembangkan Model Java.
-- Membuat koneksi database.
-- Mengembangkan DAO.
-- Mengimplementasikan fungsi CRUD.
-- Mengelola query transaksi dan database.
-
-### Asma — Lead Front-End & UI
-
-Tanggung jawab:
-- Menyiapkan project NetBeans.
-- Membuat struktur folder.
-- Mendesain Login dan Register.
-- Membuat dashboard tiga role.
-- Membuat UI katalog dan pengelolaan menu.
-- Membuat UI Batch PO.
-- Melakukan polishing tampilan aplikasi.
-
-### Raffa — Controller, QA & Documentation
-
-Tanggung jawab:
-- Mengembangkan Controller.
-- Membuat SQL Seeder dan Data Dummy.
-- Mengimplementasikan validasi role.
-- Mengembangkan validasi input.
-- Melakukan integration testing.
-- Melakukan stress testing.
-- Menyusun laporan dan slide presentasi.
-
-## 11. Version Control dengan GitHub
-
-Repository menggunakan Git untuk mengelola perubahan kode.
-
-Contoh perintah:
+### Step 1 — Clone Repository
 
 ```bash
-# Melihat status perubahan
-git status
-
-# Menambahkan perubahan
-git add .
-
-# Membuat commit
-git commit -m "Update project JatinangorUMKM"
-
-# Mengirim perubahan ke GitHub
-git push origin main
+git clone <URL_REPOSITORY_GITHUB>
 ```
 
-Branch yang direncanakan:
+### Step 2 — Start Database Server
 
-- `main`: versi stabil aplikasi.
-- `feature/backend`: pengembangan database dan DAO.
-- `feature/frontend`: pengembangan UI.
-- `feature/controller`: pengembangan controller dan validasi.
+1. Buka Laragon.
+2. Jalankan service database.
+3. Pastikan MySQL atau MariaDB aktif.
 
-Setiap perubahan sebaiknya diuji sebelum digabungkan ke branch utama.
+### Step 3 — Create Database
 
-## 12. Target Pengembangan
+Buat database dengan nama:
 
-| Periode | Target |
+```sql
+CREATE DATABASE pojat_db;
+```
+
+Import struktur tabel melalui file SQL yang disediakan dalam folder `database/`.
+
+### Step 4 — Configure JDBC
+
+Sesuaikan konfigurasi database pada:
+
+```text
+src/config/DatabaseConnection.java
+```
+
+Pastikan URL, port, username, password, dan JDBC Driver sesuai dengan konfigurasi lokal.
+
+### Step 5 — Open Project
+
+1. Buka Apache NetBeans.
+2. Pilih Open Project.
+3. Pilih folder POJAT.
+4. Pastikan JDBC Driver telah ditambahkan ke Libraries.
+
+### Step 6 — Run Application
+
+Jalankan program melalui file `Main.java`.
+
+## 🧪 10. Testing
+
+Pengujian dilakukan menggunakan metode Black Box Testing untuk memastikan fitur berjalan sesuai kebutuhan.
+
+Beberapa skenario pengujian yang direncanakan:
+
+| No. | Skenario | Expected Result |
+|---|---|---|
+| 1 | Login SuperAdmin | Masuk ke dashboard SuperAdmin |
+| 2 | Login Admin UMKM | Masuk ke dashboard Admin UMKM |
+| 3 | Login Pembeli | Masuk ke dashboard Pembeli |
+| 4 | Login dengan password salah | Sistem menampilkan pesan kesalahan |
+| 5 | Menambahkan produk | Data tersimpan di database |
+| 6 | Mengubah produk | Data berhasil diperbarui |
+| 7 | Menghapus produk | Data terhapus sesuai aturan |
+| 8 | Membuat Batch PO | Data Batch PO tersimpan |
+| 9 | Melakukan pemesanan | Pesanan tercatat di database |
+| 10 | Input tidak valid | Sistem menolak input dan menampilkan pesan |
+
+Hasil aktual dan status pengujian akan dicatat dalam `docs/TESTING_DOCUMENTATION.md` setelah setiap skenario dijalankan.
+
+## 📚 11. Project Documentation
+
+Dokumentasi tambahan tersedia dalam folder `docs/`.
+
+| File | Keterangan |
 |---|---|
-| 5–8 November 2026 | Setup database, project, login/register, data dummy |
-| 9–12 November 2026 | DAO, CRUD menu, Batch PO, validasi |
-| 13–16 November 2026 | Katalog pembeli, konfirmasi pesanan, transaksi |
-| 17–20 November 2026 | Optimasi, polishing UI, testing dan dokumentasi |
-| 21 November 2026 | Finalisasi dan presentasi |
+| SYSTEM_ARCHITECTURE.md | Penjelasan arsitektur sistem |
+| FEATURE_SPECIFICATION.md | Daftar fitur dan spesifikasi aplikasi |
+| TESTING_DOCUMENTATION.md | Skenario dan hasil pengujian |
+| DATABASE_DESIGN.md | Penjelasan struktur dan relasi database |
 
-## 13. Status Pengembangan
+## 🚧 12. Development Status
 
-Status berikut merupakan target pekerjaan dan perlu diperbarui berdasarkan implementasi aktual.
+Status berikut merupakan checklist pengembangan, bukan klaim bahwa seluruh fitur sudah selesai.
 
-- [ ] Database dan relasi tabel.
-- [ ] JDBC Connector dan koneksi database.
-- [ ] Model seluruh entitas.
-- [ ] DAO dan fungsi CRUD.
-- [ ] Login multi-role.
-- [ ] Register pembeli.
-- [ ] Dashboard SuperAdmin.
-- [ ] Dashboard UMKM.
-- [ ] Dashboard Pembeli.
-- [ ] UI Kelola Menu.
-- [ ] UI Batch PO.
-- [ ] Validasi Role dan Input.
-- [ ] Katalog Pembeli.
-- [ ] Konfirmasi Pesanan.
-- [ ] Integrasi transaksi.
-- [ ] Integration Testing.
-- [ ] Dokumentasi dan presentasi.
+- [x] Membuat repository GitHub.
+- [x] Menyiapkan database lokal.
+- [x] Membuat enam tabel database.
+- [x] Menambahkan data dummy.
+- [ ] Membuat project Java di NetBeans.
+- [ ] Mengintegrasikan JDBC.
+- [ ] Membuat fitur login dan registrasi.
+- [ ] Membuat dashboard berdasarkan role.
+- [ ] Mengimplementasikan CRUD menu.
+- [ ] Mengimplementasikan CRUD Batch PO.
+- [ ] Mengimplementasikan pemesanan.
+- [ ] Melakukan pengujian seluruh fitur.
+- [ ] Menyelesaikan dokumentasi proyek.
 
-## 14. Pengembangan Selanjutnya
+## 🔮 13. Future Development
 
-Pengembangan aplikasi akan difokuskan pada integrasi seluruh fitur, peningkatan keamanan, pengujian transaksi, serta penyempurnaan antarmuka agar aplikasi dapat digunakan dengan baik oleh SuperAdmin, Admin UMKM, dan Pembeli.
+Pengembangan selanjutnya dapat mencakup:
+
+- Penyempurnaan tampilan antarmuka.
+- Pengembangan fitur pencarian dan filter produk.
+- Pengembangan monitoring transaksi.
+- Penyempurnaan validasi dan keamanan data.
+- Peningkatan pengalaman pengguna.
+- Pengembangan fitur tambahan berdasarkan evaluasi kebutuhan UMKM.
+
+## 🤝 14. Contribution
+
+Pengembangan POJAT dilakukan dengan menerapkan pengelolaan kode menggunakan Git dan GitHub.
+
+Setiap perubahan kode sebaiknya:
+1. Memiliki tujuan yang jelas.
+2. Mengikuti struktur package proyek.
+3. Tidak merusak fungsi yang sudah berjalan.
+4. Diuji sebelum digabungkan ke versi utama.
+5. Disertai pembaruan dokumentasi jika diperlukan.
+
+## 📄 15. License
+
+Lisensi proyek akan ditentukan sesuai ketentuan pengembangan dan kepemilikan proyek.
 
 ---
 
-**Jatinangor UMKM Hub**
+<p align="center">
 
-*Empowering Local UMKM Through Digital Innovation.*
+**POJAT**
+
+*Pesan Lebih Mudah, Dukung UMKM Jatinangor!*
+
+</p>
