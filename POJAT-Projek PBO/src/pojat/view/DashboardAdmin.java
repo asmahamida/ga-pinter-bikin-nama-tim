@@ -72,6 +72,8 @@ public class DashboardAdmin extends JFrame {
         JButton btnKelolaMenu = new JButton("Kelola Menu Produk");
         JButton btnKelolaPesanan = new JButton("Kelola Pesanan");
         JButton btnKelolaPengguna = new JButton("Kelola Pengguna");
+        JButton btnKelolaBatch = new JButton("Kelola Batch PO");
+        JButton btnStatistik = new JButton("Dashboard Statistik");
 
         panelKonten.add(lblSelamatDatang);
         panelKonten.add(lblUsername);
@@ -81,7 +83,7 @@ public class DashboardAdmin extends JFrame {
         panelKonten.add(btnKelolaMenu);
 
         // Panel menu tambahan
-        JPanel panelBawah = new JPanel(new GridLayout(1, 2, 20, 0));
+        JPanel panelBawah = new JPanel(new GridLayout(1, 3, 20, 0));
         panelBawah.setBackground(new Color(240, 245, 250));
         panelBawah.setBorder(
             BorderFactory.createEmptyBorder(0, 30, 30, 30)
@@ -89,6 +91,8 @@ public class DashboardAdmin extends JFrame {
 
         panelBawah.add(btnKelolaPesanan);
         panelBawah.add(btnKelolaPengguna);
+        panelBawah.add(btnKelolaBatch);
+        panelBawah.add(btnStatistik);
 
         JPanel panelTengah = new JPanel(new BorderLayout());
         panelTengah.setBackground(new Color(240, 245, 250));
@@ -101,8 +105,28 @@ public class DashboardAdmin extends JFrame {
         add(panelUtama);
 
         // Tombol logout
+        btnKelolaBatch.addActionListener(e -> {
+            new DataBatchFrame(user).setVisible(true);
+            dispose();
+        });
+        
+        btnKelolaMenu.addActionListener(e -> {
+            new DataMenuFrame(user).setVisible(true);
+            dispose();
+        });
+        
         btnLogout.addActionListener(e -> {
             new LoginFrame().setVisible(true);
+            dispose();
+        });
+        
+        btnStatistik.addActionListener(e -> {
+            new DashboardStatistikFrame(user).setVisible(true);
+            dispose();
+        });
+        
+        btnKelolaPesanan.addActionListener(e -> {
+            new DataPesananFrame(user).setVisible(true);
             dispose();
         });
         
