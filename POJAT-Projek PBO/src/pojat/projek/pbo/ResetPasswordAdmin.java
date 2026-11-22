@@ -2,6 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
+
 package pojat.projek.pbo;
 
 import pojat.util.PasswordUtil;
@@ -12,28 +13,35 @@ public class ResetPasswordAdmin {
 
     public static void main(String[] args) {
 
-        String username = "admin";
-        String passwordBaru = "AdminPojat123!";
-
-        String hashBaru = PasswordUtil.hashPassword(passwordBaru);
+        String[][] akun = {
+            {"admin_pojat", "AdminPojat123!"},
+            {"admin_umkm", "UmkmPojat123!"},
+            {"pembeli_demo", "PembeliPojat123!"}
+        };
 
         String sql = "UPDATE users SET password = ? WHERE username = ?";
 
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
 
-            ps.setString(1, hashBaru);
-            ps.setString(2, username);
+            for (String[] data : akun) {
+                String username = data[0];
+                String passwordBaru = data[1];
+                String hash = PasswordUtil.hashPassword(passwordBaru);
 
-            int hasil = ps.executeUpdate();
+                ps.setString(1, hash);
+                ps.setString(2, username);
 
-            if (hasil > 0) {
-                System.out.println("PASSWORD BERHASIL DIRESET!");
-                System.out.println("Username: " + username);
-                System.out.println("Password baru: " + passwordBaru);
-            } else {
-                System.out.println("Username tidak ditemukan!");
+                int hasil = ps.executeUpdate();
+
+                if (hasil > 0) {
+                    System.out.println("Berhasil reset: " + username);
+                } else {
+                    System.out.println("Username tidak ditemukan: " + username);
+                }
             }
+
+            System.out.println("\nRESET SEMUA PASSWORD SELESAI!");
 
         } catch (Exception e) {
             System.out.println("Gagal reset password!");
