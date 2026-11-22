@@ -7,7 +7,7 @@
 POJAT (Platform Pemesanan Produk UMKM Jatinangor) merupakan aplikasi desktop yang dirancang untuk memfasilitasi pengelolaan UMKM dan pemesanan produk UMKM di wilayah Jatinangor.
 
 Aplikasi ini menghubungkan tiga jenis pengguna, yaitu SuperAdmin, Admin UMKM, dan Pembeli, dalam satu sistem yang terintegrasi. Melalui POJAT, pengelolaan informasi UMKM, produk, periode pemesanan, dan transaksi diharapkan dapat dilakukan secara lebih terstruktur dan efisien.
----
+
 ## 1. Background
 
 UMKM memiliki peran penting dalam aktivitas ekonomi lokal, termasuk di wilayah Jatinangor. Namun, pengelolaan informasi usaha, produk, periode pemesanan, serta transaksi dapat menjadi kurang praktis apabila dilakukan secara terpisah atau masih manual. Pembeli juga membutuhkan cara yang lebih mudah untuk menemukan produk UMKM dan melakukan pemesanan.
