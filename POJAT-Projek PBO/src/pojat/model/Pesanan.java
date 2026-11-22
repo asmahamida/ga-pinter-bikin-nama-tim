@@ -20,8 +20,7 @@ public class Pesanan {
     private String statusPesanan;
 
     // Constructor kosong
-    public Pesanan() {
-    }
+    public Pesanan() {}
 
     // Constructor lengkap
     public Pesanan(int idPesanan, String kodeTransaksi,

@@ -38,6 +38,15 @@ public class PasswordUtil {
             String password,
             String storedHash) {
 
+        if (password == null || storedHash == null) {
+            return false;
+        }
+
+        // Fallback jika password di database masih plain text (belum di-hash PBKDF2)
+        if (!storedHash.contains(":") || storedHash.split(":").length != 3) {
+            return storedHash.equals(password);
+        }
+
         try {
             String[] parts = storedHash.split(":");
 

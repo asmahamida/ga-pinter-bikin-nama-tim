@@ -43,7 +43,7 @@ public class PesananDAO {
                     rs.getString("kode_transaksi"),
                     rs.getInt("id_batch"),
                     rs.getInt("id_pembeli"),
-                    rs.getTimestamp("tgl_pesanan"),
+                    rs.getTimestamp("tgl_pesan"),
                     rs.getBigDecimal("total_harga"),
                     rs.getString("metode_pengambilan"),
                     rs.getString("bukti_pembayaran"),
@@ -285,7 +285,7 @@ public List<Pesanan> getPesananPembeli(int idPembeli) throws SQLException {
     List<Pesanan> daftar = new ArrayList<>();
 
     String sql = "SELECT * FROM pesanan WHERE id_pembeli = ? "
-               + "ORDER BY tgl_pesanan DESC";
+               + "ORDER BY tgl_pesan DESC";
 
     try (Connection conn = DatabaseConnection.getConnection();
          PreparedStatement ps = conn.prepareStatement(sql)) {
@@ -300,8 +300,8 @@ public List<Pesanan> getPesananPembeli(int idPembeli) throws SQLException {
                     rs.getString("kode_transaksi"),
                     rs.getInt("id_batch"),
                     rs.getInt("id_pembeli"),
-                    rs.getTimestamp("tgl_pesanan"),
-                    rs.getDouble("total_harga"),
+                    rs.getTimestamp("tgl_pesan"),
+                    rs.getBigDecimal("total_harga"),
                     rs.getString("metode_pengambilan"),
                     rs.getString("bukti_pembayaran"),
                     rs.getString("status_pesanan")

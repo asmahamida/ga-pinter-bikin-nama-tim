@@ -116,7 +116,7 @@ public class RiwayatPesananFrame extends JFrame {
         int idPesanan = (int) model.getValueAt(baris, 0);
 
         try {
-            List<?> detail = pesananDAO.getDetailPesanan(idPesanan);
+            List<?> detail = pesananDAO.getDetailPesananNamaMenu(idPesanan);
 
             if (detail.isEmpty()) {
                 JOptionPane.showMessageDialog(this, "Detail pesanan tidak ditemukan.");

@@ -27,7 +27,7 @@ public class CheckoutDAO {
             conn.setAutoCommit(false);
 
             String sqlPesanan = "INSERT INTO pesanan "
-                    + "(kode_transaksi, id_batch, id_pembeli, tgl_pesanan, "
+                    + "(kode_transaksi, id_batch, id_pembeli, tgl_pesan, "
                     + "total_harga, metode_pengambilan, status_pesanan) "
                     + "VALUES (?, ?, ?, NOW(), ?, ?, ?)";
 
