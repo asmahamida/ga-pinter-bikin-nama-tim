@@ -204,8 +204,6 @@ erDiagram
     }
 ```
 
-> **Catatan:** ERD ini bersifat konseptual berdasarkan daftar tabel dan fitur pada README. Pastikan relasi dan kolom cocok dengan SQL/database aktual sebelum dianggap final.
-
 ## 🔄 10. Application Flowchart
 
 Flowchart berikut menunjukkan alur umum aplikasi berdasarkan role pengguna.
@@ -333,8 +331,6 @@ classDiagram
     KeranjangFrame ..> PesananController : checkout
     RiwayatPesananFrame ..> PesananController : riwayat
 ```
-
-> **Catatan:** Diagram ini merupakan draft arsitektur, bukan reverse-engineering seluruh class aktual. Perbarui nama class, atribut, method, dan hubungan berdasarkan implementasi final.
 
 ## 💻 12. Technologies Used
 | Teknologi | Kegunaan |
@@ -454,11 +450,7 @@ POJAT/
 
 ```
 
-Struktur di atas merupakan rancangan organisasi kode. File dan package dapat bertambah atau berubah selama pengembangan.
-
-tambah latar belakang, tambah erd, tambah flowchart, tambhan class diagram
-
-## ⚙️ 14. Installation & Setup
+## ⚙️ 13. Installation & Setup
 
 ### Prerequisites
 
@@ -474,61 +466,7 @@ Pastikan perangkat telah memiliki:
 
 - JDBC Driver yang sesuai dengan database.
 
-### Step 1 — Clone Repository
-
-```bash
-
-git clone <URL_REPOSITORY_GITHUB>
-
-```
-
-### Step 2 — Start Database Server
-
-1. Buka Laragon.
-
-2. Jalankan service database.
-
-3. Pastikan MySQL atau MariaDB aktif.
-
-### Step 3 — Create Database
-
-Buat database dengan nama:
-
-```sql
-
-CREATE DATABASE pojat_db;
-
-```
-
-Import struktur tabel melalui file SQL yang disediakan dalam folder `database/`.
-
-### Step 4 — Configure JDBC
-
-Sesuaikan konfigurasi database pada:
-
-```text
-
-src/config/DatabaseConnection.java
-
-```
-
-Pastikan URL, port, username, password, dan JDBC Driver sesuai dengan konfigurasi lokal.
-
-### Step 5 — Open Project
-
-1. Buka Apache NetBeans.
-
-2. Pilih Open Project.
-
-3. Pilih folder POJAT.
-
-4. Pastikan JDBC Driver telah ditambahkan ke Libraries.
-
-### Step 6 — Run Application
-
-Jalankan program melalui file `Main.java`.
-
-## 🧪 15. Testing
+## 🧪 14. Testing
 
 Pengujian dilakukan menggunakan metode Black Box Testing untuk memastikan fitur berjalan sesuai kebutuhan.
 
@@ -548,7 +486,7 @@ Beberapa skenario pengujian yang direncanakan:
 
 Hasil aktual dan status pengujian akan dicatat dalam `docs/TESTING_DOCUMENTATION.md` setelah setiap skenario dijalankan.
 
-## 📚 16. Project Documentation
+## 📚 15. Project Documentation
 
 Dokumentasi tambahan tersedia dalam folder `docs/`.
 | File | Keterangan |
@@ -558,37 +496,8 @@ Dokumentasi tambahan tersedia dalam folder `docs/`.
 | TESTING_DOCUMENTATION.md | Skenario dan hasil pengujian |
 | DATABASE_DESIGN.md | Penjelasan struktur dan relasi database |
 
-## 🚧 17. Development Status
 
-Status berikut merupakan checklist pengembangan, bukan klaim bahwa seluruh fitur sudah selesai.
-
-- [x] Membuat repository GitHub.
-
-- [x] Menyiapkan database lokal.
-
-- [x] Membuat enam tabel database.
-
-- [x] Menambahkan data dummy.
-
-- [ ] Membuat project Java di NetBeans.
-
-- [ ] Mengintegrasikan JDBC.
-
-- [ ] Membuat fitur login dan registrasi.
-
-- [ ] Membuat dashboard berdasarkan role.
-
-- [ ] Mengimplementasikan CRUD menu.
-
-- [ ] Mengimplementasikan CRUD Batch PO.
-
-- [ ] Mengimplementasikan pemesanan.
-
-- [ ] Melakukan pengujian seluruh fitur.
-
-- [ ] Menyelesaikan dokumentasi proyek.
-
-## 🔮 18. Future Development
+## 🔮 16. Future Development
 
 Pengembangan selanjutnya dapat mencakup:
 
@@ -604,7 +513,7 @@ Pengembangan selanjutnya dapat mencakup:
 
 - Pengembangan fitur tambahan berdasarkan evaluasi kebutuhan UMKM.
 
-## 🤝 19. Contribution
+## 🤝 17. Contribution
 
 Pengembangan POJAT dilakukan dengan menerapkan pengelolaan kode menggunakan Git dan GitHub.
 
@@ -619,185 +528,3 @@ Setiap perubahan kode sebaiknya:
 4. Diuji sebelum digabungkan ke versi utama.
 
 5. Disertai pembaruan dokumentasi jika diperlukan.
-
-## 📄 20. License
-
-Lisensi proyek akan ditentukan sesuai ketentuan pengembangan dan kepemilikan proyek.
----
-<p align="center">
-**POJAT**
-</p>
-
-## 🗄️ 9. ERD (Entity Relationship Diagram)
-
-ERD berikut merupakan gambaran konseptual hubungan enam tabel utama POJAT. Detail kolom, nama foreign key, dan kardinalitas perlu disesuaikan kembali dengan skema database aktual.
-
-```mermaid
-erDiagram
-    USERS ||--o| UMKM : "akun pengelola"
-    UMKM ||--o{ MENU_ITEM : "memiliki produk"
-    UMKM ||--o{ BATCH_PO : "membuat periode PO"
-    USERS ||--o{ PESANAN : "melakukan pesanan"
-    BATCH_PO ||--o{ PESANAN : "periode pesanan"
-    PESANAN ||--|{ DETAIL_PESANAN : "memiliki rincian"
-    MENU_ITEM ||--o{ DETAIL_PESANAN : "item dalam detail"
-
-    USERS {
-        int id_user PK
-        string username
-        string password
-        string nama_lengkap
-        string no_hp
-        string role
-    }
-    UMKM {
-        int id_umkm PK
-        int id_user FK
-    }
-    MENU_ITEM {
-        int id_menu PK
-        int id_umkm FK
-    }
-    BATCH_PO {
-        int id_batch PK
-        int id_umkm FK
-    }
-    PESANAN {
-        int id_pesanan PK
-        int id_user FK
-        int id_batch FK
-    }
-    DETAIL_PESANAN {
-        int id_detail PK
-        int id_pesanan FK
-        int id_menu FK
-    }
-```
-
-## 🔄 10. Application Flowchart
-
-Flowchart berikut menunjukkan alur umum aplikasi berdasarkan role pengguna.
-
-```mermaid
-flowchart TD
-    A([Mulai]) --> B[Launch POJAT]
-    B --> C[Login / Registrasi]
-    C --> D{Akun valid?}
-    D -- Tidak --> E[Tampilkan pesan gagal]
-    E --> C
-    D -- Ya --> F{Role}
-    F -- SUPERADMIN --> G[Dashboard SuperAdmin]
-    F -- UMKM --> H[Dashboard Admin UMKM]
-    F -- PEMBELI --> I[Dashboard Pembeli]
-
-    G --> G1[Kelola Pengguna]
-    G --> G2[Kelola UMKM]
-    G --> G3[Kelola Produk/Menu]
-    G --> G4[Kelola Batch PO]
-    G --> G5[Monitor Pesanan]
-
-    H --> H1[Kelola Profil UMKM]
-    H --> H2[Kelola Produk/Menu]
-    H --> H3[Kelola Batch PO]
-    H --> H4[Kelola Pesanan Masuk]
-
-    I --> I1[Lihat Katalog]
-    I1 --> I2[Pilih Produk dan Batch PO]
-    I2 --> I3[Masukkan ke Keranjang]
-    I3 --> I4[Checkout / Buat Pesanan]
-    I4 --> I5[Lihat Riwayat dan Status Pesanan]
-
-    G1 --> J[Logout]
-    G2 --> J
-    G3 --> J
-    G4 --> J
-    G5 --> J
-    H1 --> J
-    H2 --> J
-    H3 --> J
-    H4 --> J
-    I5 --> J
-    J --> K([Selesai])
-```
-
-## 🧱 11. Class Diagram
-
-Class diagram berikut merupakan gambaran konseptual kelas pada POJAT yang dikelompokkan berdasarkan Model, DAO, Controller, dan View. Nama atribut, method, dan controller perlu disesuaikan dengan source code aktual.
-
-```mermaid
-classDiagram
-    direction TB
-
-    class User {
-        -int idUser
-        -String username
-        -String password
-        -String namaLengkap
-        -String noHp
-        -String role
-    }
-    class UMKM {
-        -int idUmkm
-        -String namaUsaha
-    }
-    class MenuItem {
-        -int idMenu
-        -String namaMenu
-        -double harga
-    }
-    class BatchPO {
-        -int idBatch
-        -Date tanggalMulai
-        -Date tanggalSelesai
-    }
-    class Pesanan {
-        -int idPesanan
-        -Date tanggalPesanan
-        -String status
-    }
-    class DetailPesanan {
-        -int idDetail
-        -int jumlah
-        -double subtotal
-    }
-
-    class UserDAO
-    class UMKMDAO
-    class MenuItemDAO
-    class BatchPODAO
-    class PesananDAO
-    class LoginController
-    class UMKMController
-    class MenuController
-    class PesananController
-
-    class LoginFrame
-    class DashboardAdmin
-    class DashboardUMKM
-    class DashboardPembeli
-    class KatalogMenuFrame
-    class KeranjangFrame
-    class RiwayatPesananFrame
-
-    User "1" --> "0..1" UMKM : akun pengelola
-    UMKM "1" --> "*" MenuItem : mengelola
-    UMKM "1" --> "*" BatchPO : membuat
-    User "1" --> "*" Pesanan : melakukan
-    BatchPO "1" --> "*" Pesanan : periode
-    Pesanan "1" --> "*" DetailPesanan : terdiri dari
-    DetailPesanan "*" --> "1" MenuItem : item pesanan
-
-    UserDAO ..> User : data
-    UMKMDAO ..> UMKM : data
-    MenuItemDAO ..> MenuItem : data
-    BatchPODAO ..> BatchPO : data
-    PesananDAO ..> Pesanan : data
-    PesananDAO ..> DetailPesanan : data detail
-
-    LoginFrame ..> LoginController : login
-    DashboardAdmin ..> UMKMController : aksi admin
-    DashboardUMKM ..> MenuController : aksi UMKM
-    KatalogMenuFrame ..> PesananController : pemesanan
-    KeranjangFrame ..> PesananController : checkout
-    RiwayatPesananFrame ..> PesananController : riwayat
-```
