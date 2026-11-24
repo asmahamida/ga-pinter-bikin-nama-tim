@@ -3,6 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package pojat.gui;
+
+import javax.swing.JOptionPane;
+import pojat.controller.LoginController;
+import pojat.model.User;
+
 /**
  *
  * @author Jasmine
@@ -10,16 +15,17 @@ package pojat.gui;
 public class LoginFrame extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(LoginFrame.class.getName());
+    private LoginController loginController;
 
     /**
      * Creates new form LoginFrame
      */
-    
-
-public LoginFrame() {
-    initComponents();
-    setLocationRelativeTo(null);
-}
+    public LoginFrame() {
+        loginController = new LoginController();
+        initComponents();
+        setLocationRelativeTo(null);
+        pojat.util.UIHelper.applyHandCursor(btnLogin, btnLogin1, chkShowPassword);
+    }
 
 
 
@@ -43,11 +49,13 @@ public LoginFrame() {
         lblPassword = new javax.swing.JLabel();
         txtUsername = new javax.swing.JTextField();
         txtPassword = new javax.swing.JPasswordField();
+        chkShowPassword = new javax.swing.JCheckBox();
         btnLogin = new javax.swing.JButton();
         lblRegister = new javax.swing.JLabel();
         btnLogin1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("POJAT - Login");
         setResizable(false);
         setSize(new java.awt.Dimension(500, 400));
 
@@ -55,6 +63,8 @@ public LoginFrame() {
         splitMain.setDividerSize(0);
 
         pnlBrand.setBackground(new java.awt.Color(255, 198, 0));
+        pnlBrand.setMaximumSize(new java.awt.Dimension(180, 400));
+        pnlBrand.setMinimumSize(new java.awt.Dimension(180, 400));
         pnlBrand.setPreferredSize(new java.awt.Dimension(180, 400));
         pnlBrand.setLayout(new java.awt.BorderLayout());
 
@@ -65,6 +75,8 @@ public LoginFrame() {
         splitMain.setLeftComponent(pnlBrand);
 
         pnlLogin.setBackground(new java.awt.Color(247, 231, 198));
+        pnlLogin.setMaximumSize(new java.awt.Dimension(320, 400));
+        pnlLogin.setMinimumSize(new java.awt.Dimension(320, 400));
         pnlLogin.setPreferredSize(new java.awt.Dimension(320, 400));
 
         lblLogin.setFont(new java.awt.Font("Circe Slab C Bold", 0, 36)); // NOI18N
@@ -84,6 +96,12 @@ public LoginFrame() {
 
         txtPassword.addActionListener(this::txtPasswordActionPerformed);
 
+        chkShowPassword.setFont(new java.awt.Font("Circe Slab C", 0, 12)); // NOI18N
+        chkShowPassword.setForeground(new java.awt.Color(0, 83, 38));
+        chkShowPassword.setText("Tampilkan password");
+        chkShowPassword.setOpaque(false);
+        chkShowPassword.addActionListener(this::chkShowPasswordActionPerformed);
+
         btnLogin.setBackground(new java.awt.Color(145, 190, 0));
         btnLogin.setFont(new java.awt.Font("Circe Slab C Bold", 0, 14)); // NOI18N
         btnLogin.setForeground(new java.awt.Color(0, 83, 38));
@@ -93,12 +111,14 @@ public LoginFrame() {
         btnLogin.setIconTextGap(0);
         btnLogin.addActionListener(this::btnLoginActionPerformed);
 
-        lblRegister.setText("Masuk untuk melanjutkan");
+        lblRegister.setFont(new java.awt.Font("Circe Slab C", 0, 13)); // NOI18N
+        lblRegister.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblRegister.setText("Belum punya akun?");
 
         btnLogin1.setBackground(new java.awt.Color(255, 198, 0));
         btnLogin1.setFont(new java.awt.Font("Circe Slab C Bold", 0, 14)); // NOI18N
-        btnLogin1.setForeground(new java.awt.Color(255, 82, 0));
-        btnLogin1.setText("Daftar");
+        btnLogin1.setForeground(new java.awt.Color(0, 83, 38));
+        btnLogin1.setText("Daftar Akun");
         btnLogin1.setBorder(null);
         btnLogin1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnLogin1.setIconTextGap(0);
@@ -116,7 +136,8 @@ public LoginFrame() {
                             .addComponent(lblPassword)
                             .addComponent(lblUsername)
                             .addComponent(txtUsername, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
-                            .addComponent(txtPassword)))
+                            .addComponent(txtPassword)
+                            .addComponent(chkShowPassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(pnlLoginLayout.createSequentialGroup()
                         .addGap(112, 112, 112)
                         .addComponent(lblLogin))
@@ -124,38 +145,37 @@ public LoginFrame() {
                         .addGap(75, 75, 75)
                         .addComponent(lblSubtitle))
                     .addGroup(pnlLoginLayout.createSequentialGroup()
-                        .addGap(126, 126, 126)
-                        .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlLoginLayout.createSequentialGroup()
-                        .addGap(96, 96, 96)
-                        .addComponent(lblRegister))
-                    .addGroup(pnlLoginLayout.createSequentialGroup()
-                        .addGap(126, 126, 126)
-                        .addComponent(btnLogin1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(95, 95, 95)
+                        .addGroup(pnlLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lblRegister, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+                            .addComponent(btnLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnLogin1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(26, Short.MAX_VALUE))
         );
         pnlLoginLayout.setVerticalGroup(
             pnlLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlLoginLayout.createSequentialGroup()
-                .addGap(41, 41, 41)
+                .addGap(32, 32, 32)
                 .addComponent(lblLogin)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblSubtitle)
-                .addGap(26, 26, 26)
+                .addGap(22, 22, 22)
                 .addComponent(lblUsername)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
+                .addGap(20, 20, 20)
                 .addComponent(lblPassword)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(chkShowPassword)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblRegister)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnLogin1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addComponent(btnLogin1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         splitMain.setRightComponent(pnlLogin);
@@ -186,20 +206,75 @@ public LoginFrame() {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
-        // TODO add your handling code here:
+        prosesLogin();
     }//GEN-LAST:event_txtPasswordActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        // TODO add your handling code here:
+        prosesLogin();
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void txtUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsernameActionPerformed
-        // TODO add your handling code here:
+        txtPassword.requestFocusInWindow();
     }//GEN-LAST:event_txtUsernameActionPerformed
 
     private void btnLogin1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogin1ActionPerformed
-        // TODO add your handling code here:
+        new RegisterFrame().setVisible(true);
+        dispose();
     }//GEN-LAST:event_btnLogin1ActionPerformed
+
+    private void chkShowPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkShowPasswordActionPerformed
+        txtPassword.setEchoChar(chkShowPassword.isSelected() ? (char) 0 : '\u2022');
+    }//GEN-LAST:event_chkShowPasswordActionPerformed
+
+    private void prosesLogin() {
+        String username = txtUsername.getText().trim();
+
+        char[] passwordChars = txtPassword.getPassword();
+        String password = new String(passwordChars);
+        java.util.Arrays.fill(passwordChars, '\0');
+
+        if (username.isEmpty() || password.isEmpty()) {
+            JOptionPane.showMessageDialog(
+                this,
+                "Username dan password harus diisi!",
+                "Peringatan",
+                JOptionPane.WARNING_MESSAGE
+            );
+            return;
+        }
+
+        User user = loginController.login(username, password);
+
+        if (user != null) {
+            switch (user.getRole().toUpperCase()) {
+                case "SUPERADMIN":
+                    new DashboardAdmin(user).setVisible(true);
+                    break;
+                case "UMKM":
+                    new DashboardUMKM(user).setVisible(true);
+                    break;
+                case "PEMBELI":
+                    new DashboardPembeli(user).setVisible(true);
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(
+                        this,
+                        "Role pengguna tidak dikenali!"
+                    );
+                    return;
+            }
+
+            dispose();
+        } else {
+            JOptionPane.showMessageDialog(
+                this,
+                "Username atau password salah!",
+                "Login Gagal",
+                JOptionPane.ERROR_MESSAGE
+            );
+            txtPassword.setText("");
+        }
+    }
 
     /**
      * @param args the command line arguments
@@ -229,6 +304,7 @@ public LoginFrame() {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogin;
     private javax.swing.JButton btnLogin1;
+    private javax.swing.JCheckBox chkShowPassword;
     private javax.swing.JLabel lblLogin;
     private javax.swing.JLabel lblLogo;
     private javax.swing.JLabel lblPassword;

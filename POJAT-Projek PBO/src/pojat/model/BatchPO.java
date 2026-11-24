@@ -7,6 +7,8 @@
 package pojat.model;
 
 import java.sql.Date;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 
 public class BatchPO {
 
@@ -20,6 +22,22 @@ public class BatchPO {
     private String status;
 
     public BatchPO() {
+    }
+
+    // Constructor untuk data dari database (DATETIME + DATE)
+    public BatchPO(int idBatch, int idUMKM, String namaBatch,
+                  Timestamp tglBuka, Timestamp tglTutup,
+                  Date tglPengiriman, int kuotaMax, String status) {
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        this.idBatch = idBatch;
+        this.idUMKM = idUMKM;
+        this.namaBatch = namaBatch;
+        this.tglBuka = (tglBuka != null) ? sdf.format(tglBuka) : "";
+        this.tglTutup = (tglTutup != null) ? sdf.format(tglTutup) : "";
+        this.tglPengiriman = (tglPengiriman != null) ? tglPengiriman.toString() : "";
+        this.kuotaMax = kuotaMax;
+        this.status = status;
     }
 
     // Constructor untuk data dari database (java.sql.Date)

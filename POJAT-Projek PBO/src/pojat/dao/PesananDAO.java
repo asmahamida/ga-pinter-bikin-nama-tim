@@ -315,6 +315,145 @@ public List<Pesanan> getPesananPembeli(int idPembeli) throws SQLException {
     return daftar;
 }
 
+public List<Pesanan> getPesananByUMKM(int idUmkm) throws SQLException {
+    List<Pesanan> daftar = new ArrayList<>();
+    String sql = "SELECT p.* FROM pesanan p "
+               + "JOIN batch_po b ON p.id_batch = b.id_batch "
+               + "WHERE b.id_umkm = ? ORDER BY p.tgl_pesan DESC";
+
+    try (Connection conn = DatabaseConnection.getConnection();
+         PreparedStatement ps = conn.prepareStatement(sql)) {
+        ps.setInt(1, idUmkm);
+        try (ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                daftar.add(new Pesanan(
+                    rs.getInt("id_pesanan"),
+                    rs.getString("kode_transaksi"),
+                    rs.getInt("id_batch"),
+                    rs.getInt("id_pembeli"),
+                    rs.getTimestamp("tgl_pesan"),
+                    rs.getBigDecimal("total_harga"),
+                    rs.getString("metode_pengambilan"),
+                    rs.getString("bukti_pembayaran"),
+                    rs.getString("status_pesanan")
+                ));
+            }
+        }
+    }
+    return daftar;
+}
+
+public boolean uploadBuktiPembayaran(int idPesanan, String buktiPembayaran)
+        throws SQLException {
+    String sql = "UPDATE pesanan SET bukti_pembayaran = ? WHERE id_pesanan = ?";
+
+    try (Connection conn = DatabaseConnection.getConnection();
+         PreparedStatement ps = conn.prepareStatement(sql)) {
+        ps.setString(1, buktiPembayaran);
+        ps.setInt(2, idPesanan);
+        return ps.executeUpdate() > 0;
+    }
+}
+
+public List<Object[]> getAllPesananLengkap() throws SQLException {
+    List<Object[]> daftar = new ArrayList<>();
+    String sql = "SELECT p.id_pesanan, p.kode_transaksi, usr.nama_lengkap, usr.no_hp, "
+               + "u.nama_toko, b.nama_batch, p.tgl_pesan, p.total_harga, "
+               + "p.metode_pengambilan, p.bukti_pembayaran, p.status_pesanan "
+               + "FROM pesanan p "
+               + "JOIN users usr ON p.id_pembeli = usr.id_user "
+               + "JOIN batch_po b ON p.id_batch = b.id_batch "
+               + "JOIN umkm u ON b.id_umkm = u.id_umkm "
+               + "ORDER BY p.tgl_pesan DESC, p.id_pesanan DESC";
+
+    try (Connection conn = DatabaseConnection.getConnection();
+         PreparedStatement ps = conn.prepareStatement(sql);
+         ResultSet rs = ps.executeQuery()) {
+        while (rs.next()) {
+            daftar.add(new Object[]{
+                rs.getInt("id_pesanan"),
+                rs.getString("kode_transaksi"),
+                rs.getString("nama_lengkap"),
+                rs.getString("no_hp"),
+                rs.getString("nama_toko") + " - " + rs.getString("nama_batch"),
+                rs.getTimestamp("tgl_pesan"),
+                rs.getBigDecimal("total_harga"),
+                rs.getString("metode_pengambilan"),
+                rs.getString("bukti_pembayaran"),
+                rs.getString("status_pesanan")
+            });
+        }
+    }
+    return daftar;
+}
+
+public List<Object[]> getPesananUMKMLengkap(int idUmkm) throws SQLException {
+    List<Object[]> daftar = new ArrayList<>();
+    String sql = "SELECT p.id_pesanan, p.kode_transaksi, usr.nama_lengkap, usr.no_hp, "
+               + "u.nama_toko, b.nama_batch, p.tgl_pesan, p.total_harga, "
+               + "p.metode_pengambilan, p.bukti_pembayaran, p.status_pesanan "
+               + "FROM pesanan p "
+               + "JOIN users usr ON p.id_pembeli = usr.id_user "
+               + "JOIN batch_po b ON p.id_batch = b.id_batch "
+               + "JOIN umkm u ON b.id_umkm = u.id_umkm "
+               + "WHERE b.id_umkm = ? "
+               + "ORDER BY p.tgl_pesan DESC, p.id_pesanan DESC";
+
+    try (Connection conn = DatabaseConnection.getConnection();
+         PreparedStatement ps = conn.prepareStatement(sql)) {
+        ps.setInt(1, idUmkm);
+        try (ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                daftar.add(new Object[]{
+                    rs.getInt("id_pesanan"),
+                    rs.getString("kode_transaksi"),
+                    rs.getString("nama_lengkap"),
+                    rs.getString("no_hp"),
+                    rs.getString("nama_toko") + " - " + rs.getString("nama_batch"),
+                    rs.getTimestamp("tgl_pesan"),
+                    rs.getBigDecimal("total_harga"),
+                    rs.getString("metode_pengambilan"),
+                    rs.getString("bukti_pembayaran"),
+                    rs.getString("status_pesanan")
+                });
+            }
+        }
+    }
+    return daftar;
+}
+
+public List<Object[]> getRiwayatPembeliLengkap(int idPembeli) throws SQLException {
+    List<Object[]> daftar = new ArrayList<>();
+    String sql = "SELECT p.id_pesanan, p.kode_transaksi, u.nama_toko, b.nama_batch, "
+               + "p.tgl_pesan, p.total_harga, p.metode_pengambilan, "
+               + "p.bukti_pembayaran, p.status_pesanan "
+               + "FROM pesanan p "
+               + "JOIN batch_po b ON p.id_batch = b.id_batch "
+               + "JOIN umkm u ON b.id_umkm = u.id_umkm "
+               + "WHERE p.id_pembeli = ? "
+               + "ORDER BY p.tgl_pesan DESC, p.id_pesanan DESC";
+
+    try (Connection conn = DatabaseConnection.getConnection();
+         PreparedStatement ps = conn.prepareStatement(sql)) {
+        ps.setInt(1, idPembeli);
+        try (ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                daftar.add(new Object[]{
+                    rs.getInt("id_pesanan"),
+                    rs.getString("kode_transaksi"),
+                    rs.getString("nama_toko") + " - " + rs.getString("nama_batch"),
+                    rs.getTimestamp("tgl_pesan"),
+                    rs.getBigDecimal("total_harga"),
+                    rs.getString("metode_pengambilan"),
+                    rs.getString("bukti_pembayaran"),
+                    rs.getString("status_pesanan")
+                });
+            }
+        }
+    }
+    return daftar;
+}
+
 }
 
 

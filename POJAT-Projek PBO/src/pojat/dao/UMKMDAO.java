@@ -52,6 +52,60 @@ public class UMKMDAO {
         return daftarUMKM;
     }
 
+    // Mengambil data UMKM berdasarkan ID owner
+    public UMKM getUMKMByOwner(int idOwner) throws SQLException {
+        String sql = "SELECT * FROM umkm WHERE id_owner = ? LIMIT 1";
+
+        try (
+            Connection conn = DatabaseConnection.getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql)
+        ) {
+            ps.setInt(1, idOwner);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    return new UMKM(
+                        rs.getInt("id_umkm"),
+                        rs.getInt("id_owner"),
+                        rs.getString("nama_toko"),
+                        rs.getString("deskripsi"),
+                        rs.getString("alamat_penjemputan"),
+                        rs.getString("no_rekening"),
+                        rs.getString("bank")
+                    );
+                }
+            }
+        }
+
+        return null;
+    }
+
+    // Mengambil data UMKM berdasarkan ID UMKM
+    public UMKM getUMKMById(int idUmkm) throws SQLException {
+        String sql = "SELECT * FROM umkm WHERE id_umkm = ? LIMIT 1";
+
+        try (
+            Connection conn = DatabaseConnection.getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql)
+        ) {
+            ps.setInt(1, idUmkm);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    return new UMKM(
+                        rs.getInt("id_umkm"),
+                        rs.getInt("id_owner"),
+                        rs.getString("nama_toko"),
+                        rs.getString("deskripsi"),
+                        rs.getString("alamat_penjemputan"),
+                        rs.getString("no_rekening"),
+                        rs.getString("bank")
+                    );
+                }
+            }
+        }
+
+        return null;
+    }
+
 
     // ==================================
     // CREATE: Menambahkan data UMKM

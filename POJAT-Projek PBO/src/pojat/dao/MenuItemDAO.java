@@ -48,6 +48,31 @@ public class MenuItemDAO {
         return daftarMenu;
     }
 
+    // Mengambil data menu berdasarkan UMKM tertentu
+    public List<MenuItem> getMenuByUMKM(int idUmkm) throws SQLException {
+        List<MenuItem> daftarMenu = new ArrayList<>();
+        String sql = "SELECT * FROM menu_item WHERE id_umkm = ? ORDER BY id_menu DESC";
+
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setInt(1, idUmkm);
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    MenuItem menu = new MenuItem(
+                        rs.getInt("id_menu"),
+                        rs.getInt("id_umkm"),
+                        rs.getString("nama_menu"),
+                        rs.getString("deskripsi"),
+                        rs.getDouble("harga"),
+                        rs.getInt("stok_per_batch")
+                    );
+                    daftarMenu.add(menu);
+                }
+            }
+        }
+        return daftarMenu;
+    }
+
     // ==========================================
     // 2. CREATE - MENAMBAHKAN MENU
     // ==========================================
